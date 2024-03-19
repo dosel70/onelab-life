@@ -2,7 +2,7 @@
 {% load socialaccount %}
 {% load static %}
 {% block static %}
-    <link rel="stylesheet" href="{% static 'css/login/login.css' %}" />
+    <link rel="stylesheet" href="{% static 'member/css/login/login.css' %}" />
 {% endblock %}
 
 {% block title %}로그인{% endblock %}
@@ -163,7 +163,7 @@
 {% block js %}
     <script>const memberEmail = `{{ memberEmail }}`</script>
     <script>const check = `{{ check }}`</script>
-    <script src="{% static 'js/login/login.js' %}"></script>
-    <script src="{% static 'js/login/login-id.js' %}"></script>
-    <script src="{% static 'js/login/login-pw.js' %}"></script>
+    <script src="{% static 'member/js/login/login.js' %}"></script>
+    <script src="{% static 'member/js/login/login-id.js' %}"></script>
+    <script src="{% static 'member/js/login/login-pw.js' %}"></script>
 {% endblock %}

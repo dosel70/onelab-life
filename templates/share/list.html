@@ -2,6 +2,7 @@
 {% load static %}
 {% block static %}
 <link rel="stylesheet" href="{% static 'share/css/list.css' %}">
+<link rel="stylesheet" href="{% static 'public/css/main-page-footer.css' %}">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
@@ -352,6 +353,7 @@
                 </svg>
             </button>
         </div>
+        {% include  "header/main-page-footer.html"%}
     </div>
 {% endblock %}
 {% block js %}

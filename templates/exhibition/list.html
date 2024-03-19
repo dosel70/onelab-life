@@ -4,11 +4,13 @@
     
 {% block static %}
     <link rel="stylesheet" href="{% static 'exhibition/css/exhibition_list.css' %}">
+    <link rel="stylesheet" href="{% static 'public/css/main-page-footer.css' %}">
 {% endblock %}
 
 {% block title %}공모전목록{% endblock %}
 
 {% block content %}
+    {% include  "header/main-page-header-login.html"%}
     <div id="page-container">
             <main id="main-app">
                 <div></div>
@@ -86,6 +88,7 @@
                 </div>
                 <div></div>
             </main>
+    {% include  "header/main-page-footer.html"%}
         </div>
 {% endblock %}
 

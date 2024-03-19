@@ -39,7 +39,9 @@
             placeName = '서울대학교';
         }else if (placeName.includes('kaist')) {
             placeName = '카이스트';
-         }
+         } else {
+            placeName = placeName
+        }
 
         let mapContainer = document.getElementById("map"), // 지도를 표시할 div
             mapOption = {

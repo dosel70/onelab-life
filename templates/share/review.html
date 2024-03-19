@@ -3,12 +3,14 @@
 {% block static %}
 <link rel="stylesheet" href="{% static 'share/css/detail.css' %}">
     <link rel="stylesheet" href="{% static 'public/css/modal.css' %}">
+    <link rel="stylesheet" href="{% static 'public/css/main-page-footer.css' %}">
+    <link rel="stylesheet" href="{% static 'public/css/main-page-header.css' %}">
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 {% endblock %}
 {% block title %}자료공유 후기페이지{% endblock %}
 {% block content %}
     {% if request.session.member %}
-        {% include  "header/main-page-header-login-one.html"%}
+        {% include  "header/main-page-header-login.html"%}
     {% else %}
         {% include "header/main-page-header-all.html" %}
     {% endif %}
@@ -796,6 +798,7 @@
                 <div></div>
                 
             </main>
+    {% include  "header/main-page-footer.html"%}
         </div>
 {% endblock %}
 {% block js %}

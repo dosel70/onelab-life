@@ -168,19 +168,6 @@ class MyPageMainView(View):
         except EmptyPage:
             communities = community_paginator.page(community_paginator.num_pages)
 
-        # 공모전 페이징 처리
-        exhibitions_row_count = 3
-        exhibitions_paginator = Paginator(exhibitions, exhibitions_row_count)
-
-        if exhibitions:
-            try:
-                exhibitions = exhibitions_paginator.page(page)
-            except PageNotAnInteger:
-                exhibitions = exhibitions_paginator.page(1)
-            except EmptyPage:
-                exhibitions = exhibitions_paginator.page(exhibitions_paginator.num_pages)
-        else:
-            exhibitions = None
 
         default_profile_url = 'https://static.wadiz.kr/assets/icon/profile-icon-1.png'
 
@@ -224,7 +211,6 @@ class MyPageMainView(View):
         #     context['exhibitions'] = exhibitions
         else :
             context['community_file'] = CommunityFile.objects.filter(community_id=community.first()).first()
-
         return render(request,
                       'mypage/main-high.html' if highschool else 'mypage/main-university.html' if university else 'mypage/main.html'
                       if school else 'mypage/main-nomal.html', context)

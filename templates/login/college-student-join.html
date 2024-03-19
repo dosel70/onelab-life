@@ -1,7 +1,7 @@
 {% extends 'login/base.html' %}
 {% load static %}
 {% block static %}
-    <link rel="stylesheet" href="{% static 'css/login/college-student-join.css' %}">
+    <link rel="stylesheet" href="{% static 'member/css/login/college-student-join.css' %}">
 {% endblock %}
 {% block title %}Oauth 회원가입{% endblock %}
 {% block content %}
@@ -1137,7 +1137,7 @@
 {#            mname.value = memberName#}
 {#    </script>#}
 
-    <script src="{% static 'js/login/college-student-join.js' %}"></script>
+    <script src="{% static 'member/js/login/college-student-join.js' %}"></script>
     <script>const memberType = `{{ member_type }}`</script>
 {#    <script src="{% static 'js/login/check.js' %}"></script>#}
 {#    <script src="{% static 'js/login/login.js' %}"></script>#}

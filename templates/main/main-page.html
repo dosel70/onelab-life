@@ -1,7 +1,7 @@
 {% extends 'login/base.html' %}
 {% load static %}
 {% block static %}
-    <link rel="stylesheet" href="{% static 'css/main/main-page.css' %}" />
+    <link rel="stylesheet" href="{% static 'member/css/main/main-page.css' %}" />
 {% endblock %}
 
 {% block title %}로그인{% endblock %}
@@ -133,15 +133,15 @@
                                         <div>
                                             <a href="" class="visualslide-container">
                                                 <img
-                                                    src="{% static 'public/images/bannerfirst.png' %}"
+                                                    src="{% static 'public/images/banner-main1.png' %}"
                                                     alt=""
                                                     class="main-banner-img"
                                                 />
                                                 <div class="visualslide-wrap">
                                                     <div class="visualslide-text">
-                                                        <p class="visualslide-title">
-                                                            원랩의 존재하는 이유 <br /> 자신의 경력을 쌓다!!!!
-                                                        </p>
+{#                                                        <p class="visualslide-title">#}
+{#                                                            원랩의 존재하는 이유 <br /> 자신의 경력을 쌓다!!!!#}
+{#                                                        </p>#}
                                                     </div>
                                                 </div></a
                                             >
@@ -153,16 +153,16 @@
                                         <div>
                                             <a href="" class="visualslide-container">
                                                 <img
-                                                    src="{% static 'public/images/bannsersecond.png' %}"
+                                                    src="{% static 'public/images/banner-main2.png' %}"
                                                     alt=""
                                                     class="main-banner-img"
                                                 />
                                                 <div class="visualslide-wrap">
                                                     <div class="visualslide-text">
-                                                        <p class="visualslide-title">
-                                                            매일 새로운 공모전<br />많은 혜택런을 포함
-                                                        </p>
-                                                        <p class="visualslide-badge">이벤트</p>
+{#                                                        <p class="visualslide-title">#}
+{#                                                            매일 새로운 공모전<br />많은 혜택런을 포함#}
+{#                                                        </p>#}
+{#                                                        <p class="visualslide-badge">이벤트</p>#}
                                                     </div>
                                                 </div></a
                                             >
@@ -174,15 +174,15 @@
                                         <div>
                                             <a href="" class="visualslide-container">
                                                 <img
-                                                    src="{% static 'public/images/bannerthird.png' %}"
+                                                    src="{% static 'public/images/banner-main3.png' %}"
                                                     alt=""
                                                     class="main-banner-img"
                                                 />
                                                 <div class="visualslide-wrap"> 
                                                     <div class="visualslide-text">
-                                                        <p class="visualslide-title">
-                                                            모든 대학생 회원들은 오라~ <br />실전을 통해 경력을 쌓자!!!
-                                                        </p>
+{#                                                        <p class="visualslide-title">#}
+{#                                                            모든 대학생 회원들은 오라~ <br />실전을 통해 경력을 쌓자!!!#}
+{#                                                        </p>#}
                                                     </div>
                                                 </div>
                                             </a>
@@ -493,24 +493,24 @@
 {#                                                    </div></div#}
 {#                                            ></a>#}
 {#                                        </li>#}
-                                        {% for share in shares|slice:":6" %}
-                                            {% with first_share_file=share.sharefile_set.first %}
+                                        {% for place in places|slice:":6"%}
+                                            {% with first_place_file=place.placefile_set.first %}
                                                 <li class="tab-container-list-item">
                                                     <a class="ranking-card-container" href=""
                                                         ><div class="ranking-card-content-box">
-                                                            <div class="ranking-card-order">{{ share.id }}</div>
+                                                           <div class="ranking-card-order">{{ forloop.counter }}</div>
                                                             <div class="ranking-card-content">
                                                                 <strong class="title-title"
-                                                                    >{{ share.share_title }}</strong
+                                                                    >{{ place.place_title }}</strong
                                                                 >
                                                                 <div class="ranking-card-info-wrapper">
-                                                                    <p class="ranking-card-info-string-wrapper">{{ share.share_points }}</p>
+                                                                    <p class="ranking-card-info-string-wrapper">{{ place.place_points }}</p>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="ranking-card-thumbnail-box">
-                                                            {% if first_share_file %}
-                                                                <img class="thumbnail-image" alt="" src="/upload/{{ first_share_file.path }}" style="width: 100%; height: 100%"/>
+                                                            {% if first_place_file %}
+                                                                <img class="thumbnail-image" alt="" src="/upload/{{ first_place_file.path }}" style="width: 100%; height: 100%"/>
                                                             {% endif %}
                                                         </div>
                                                         <div class="card-spinner-container">
@@ -909,26 +909,25 @@
 {#                                </div>#}
 {#                            </li>#}
                             {% for onelab in onelabs|slice:":6"  %}
-                                {% with first_community_file=community.community_file_set.first %}
+                                {% with first_onelab_file=onelab.onelabfile_set.first %}
                                     <li class="hot-funding-list-card">
                                         <div class="curation-vertical-card-container">
                                             <a class="curation-vertical-card-content" href=""
                                                 ><div class="curation-vertical-card-thumbnail-box">
                                                     <div class="curation-vertical-card-thumbnail-wrap">
-                                                        {% if first_community_file %}
-                                                            <img class="thumbnail-image" alt="" src="/upload/{{ first_community_file.path }}" style="width: 100%; height: 100%"/>
+                                                        {% if first_onelab_file %}
+                                                            <img class="thumbnail-image" alt="" src="/upload/{{ first_onelab_file.path }}" style="width: 100%; height: 100%"/>
                                                         {% endif %}
                                                     </div>
                                                 </div>
                                                 <div class="curation-vertical-card-info-box">
-                                                    <div class="curation-vertical-card-badge-wrapper">
-                                                        <span class="label-badge">예약구매</span>
-                                                    </div>
+{#                                                    <div class="curation-vertical-card-badge-wrapper">#}
+{#                                                        <span class="label-badge">예약구매</span>#}
+{#                                                    </div>#}
                                                     <div class="curation-vertical-card-info">
-                                                        <p class="info-string-wrapper-info-string-wrapper">85,256% 달성</p>
+                                                        <p class="info-string-wrapper-info-string-wrapper">{{ onelab.onelab_main_title }}</p>
                                                         <strong class="title-title"
-                                                            >34억 심플리웍스 | 모공 1위! 이번에도 저희가 해볼게요
-                                                            &lt;모공한번&gt;</strong
+                                                            >{{ onelab.onelab_content }}</strong
                                                         >
                                                     </div>
                                                 </div>
@@ -1725,9 +1724,9 @@
         </footer>
 {% endblock %}
 {% block js %}
-    <script src="{% static 'js/main/main-list.js' %}"></script>
-    <script src="{% static 'js/main/main-page-banner.js' %}"></script>
-    <script src="{% static 'js/main/main-page-ranking-tab.js' %}"></script>
-    <script src="{% static 'js/main/main-page-AI.js' %}"></script>
-    <script src="{% static 'js/main/main-page-footer-menu-box.js' %}"></script>
+    <script src="{% static 'member/js/main/main-list.js' %}"></script>
+    <script src="{% static 'member/js/main/main-page-banner.js' %}"></script>
+    <script src="{% static 'member/js/main/main-page-ranking-tab.js' %}"></script>
+    <script src="{% static 'member/js/main/main-page-AI.js' %}"></script>
+    <script src="{% static 'member/js/main/main-page-footer-menu-box.js' %}"></script>
 {% endblock %}

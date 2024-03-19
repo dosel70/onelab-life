@@ -2,11 +2,12 @@
 {% load static %}
 {% block static %}
 <link rel="stylesheet" href="{% static 'place/css/detail.css' %}">
+<link rel="stylesheet" href="{% static 'public/css/main-page-footer.css' %}">
 {% endblock %}
 {% block title %}장소공유 상세페이지{% endblock %}
 {% block content %}
     {% if request.session.member %}
-        {% include  "header/main-page-header-login-one.html"%}
+        {% include  "header/main-page-header-login.html"%}
     {% else %}
         {% include "header/main-page-header-all.html" %}
     {% endif %}
@@ -314,7 +315,7 @@
                                             <div class="DetailInfoHeader_badgeContainer"></div>
                                             <div class="DetailInfoHeader_titleInfo">
                                                 <h3 class="DetailInfoHeader_title">{{ place.place_title }}</h3>
-                                                    {% if request.session.member == place.school.member %}
+                                                    {% if request.session.member.id == place.school.member.id %}
                                                         <div>
                                                             <a href="{% url 'place:update' id=place.id %}">
                                                                 <button type="button" class="update-btn">수정하기</button>
@@ -509,7 +510,7 @@
 
                                         <!-- 엔드식스 주식회사 쪽 -->
                                         <div class="SpaceLocationSection_map">
-                                            <iframe style="margin-top: 20px; height: 400px; width: 455px;" src="{% static 'map.html' %}?place_address={{place.school.school_member_address}}&place_name={{ place.school.member.member_school_email }}" scrolling="no" frameborder="0" class="SpaceLocationMap_frame"></iframe>
+                                            <iframe style="margin-top: 20px; height: 400px; width: 455px;" src="{% static 'map.html' %}?place_address={{place.school.school_member_address}}&place_name={{ place.school.school_name }}" scrolling="no" frameborder="0" class="SpaceLocationMap_frame"></iframe>
                                         </div>
                                         </form>
                                     </div>
@@ -521,6 +522,7 @@
                 
                 </div>
             </main>
+    {% include  "header/main-page-footer.html"%}
         </div>
 {% endblock %}
 {% block js %}

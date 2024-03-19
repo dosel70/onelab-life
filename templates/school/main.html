@@ -45,16 +45,30 @@
                     <nav class="SpaceHeader_nav">
                         <ul style="margin-left: -167px">
                             <li aria-hidden="true" class="SpaceHeader_current"></li>
-                            <li>
+                            
                                 {% if request.session.school_member_check == True %}
-                                    <a class="SpaceHeader_link place" href="{% url 'place:write' %}" style="cursor: pointer">장소</a>
+                                    <li>
+                                        <a class="SpaceHeader_link place" href="{% url 'place:write' %}" style="cursor: pointer">장소</a>
+                                    </li>
+                                    <li>
+                                        <a class="SpaceHeader_link place" href="{% url 'exhibition:write' %}">대회</a>
+                                    </li>
                                 {% else %}
-                                    <a class="SpaceHeader_link place" style="cursor: pointer" >장소</a>
+                                    <li>
+                                        <a class="SpaceHeader_link place" style="cursor: pointer" >장소</a>
+                                    </li>
+                                    <li>
+                                        <a class="SpaceHeader_link place" href="">대회</a>
+                                    </li>
                                 {% endif %}
-                            </li>
-                            <li>
-                                <a class="SpaceHeader_link" href="">대회</a>
-                            </li>
+                            
+                            
+{#                                {% if request.session.school_member_check == True %}#}
+{#                                    <a class="SpaceHeader_link place" href="">대회</a>#}
+{#                                {% else %}#}
+{#                                    <a class="SpaceHeader_link place" href="{% url 'exhibition:write' %}">대회</a>#}
+{#                                {% endif %}#}
+                            
                         </ul>
                     </nav>
                     <div class="SpaceHeader_home">

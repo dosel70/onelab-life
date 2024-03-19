@@ -59,6 +59,7 @@ class MainView(View):
                 'exhibition_content': exhibition.exhibition_content,
                 'exhibition_status': exhibition.exhibition_status,
             })
+            print(exhibition_files)
         # print("들어옴")
         # print(exhibition_info)
 

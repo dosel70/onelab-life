@@ -286,7 +286,7 @@ class PlaceUpdateView(View):
         # 새로운 파일들이 없는 경우 기존 파일들 유지
         if not files:
             # 수정된 Place의 상세 페이지로 이동
-            return redirect(place.get_absolute_url())
+            return redirect(reverse('place:detail', kwargs={'id': place_id}))
 
         # 기존의 파일들 삭제
         place.placefile_set.all().delete()
@@ -297,7 +297,7 @@ class PlaceUpdateView(View):
             file_instance = File.objects.create(file_size=file.size)
             PlaceFile.objects.create(place=place, file=file_instance, path=file)
 
-        return redirect(place.get_absolute_url())
+        return redirect(reverse('place:detail', kwargs={'id': place_id}))
 
 class PlaceDeleteView(View):
     def get(self, request):
