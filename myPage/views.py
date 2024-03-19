@@ -33,18 +33,24 @@ import math
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import math
 
-
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
 from django.views import View
 from django.http import JsonResponse
+#-----import 부분 주석처리 ----------#
 
+# 마이페이지 메인 화면에 들어갈 기능 구현 View
 class MyPageMainView(View):
     def get(self, request):
+        # 로그인된 회원을 선언한다. (세션에 저장되있는 member의 id를 불러옴)
         member_id = request.session['member']['id']
+        # University model에서 member_id 컬럼이 member_id 변수와 일치하는지 확인하고 그 중 첫번째 객체를 가져옴
         university = University.objects.filter(member_id=member_id).first()
+        # Highschool model에서 member_id 컬럼이 member_id 변수와 일치하는지 확인하고 그 중 첫번째 객체를 가져옴
         highschool = HighSchool.objects.filter(member_id=member_id).first()
+        # school model에서 member_id 컬럼이 member_id 변수와 일치하는지 확인하고 그 중 첫번째 객체를 가져옴
         school = School.objects.filter(member_id=member_id).first()
+        # MemberFile model 에서 member_id가 서로 일치하는지 확인하고 첫번째 객체를 가져옴
         profile = MemberFile.objects.filter(member_id=member_id).first()
 
 
@@ -55,6 +61,9 @@ class MyPageMainView(View):
 
         elif school:
             exhibitions = Exhibition.objects.filter(school=school).order_by('-id')
+
+        else :
+            exhibitions = None
 
         request.session['member'] = MemberSerializer(Member.objects.get(id=request.session['member']['id'])).data
         check = request.GET.get('check')
@@ -205,7 +214,7 @@ class MyPageMainView(View):
         #     context['exhibitions'] = exhibitions
         else :
             context['community_file'] = CommunityFile.objects.filter(community_id=community.first()).first()
-            context['exhibitions'] = exhibitions
+
         return render(request,
                       'mypage/main-high.html' if highschool else 'mypage/main-university.html' if university else 'mypage/main.html'
                       if school else 'mypage/main-nomal.html', context)
