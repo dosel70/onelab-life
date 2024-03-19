@@ -42,7 +42,7 @@ from django.http import JsonResponse
 # 마이페이지 메인 화면에 들어갈 기능 구현 View
 class MyPageMainView(View):
     def get(self, request):
-        # 로그인된 회원을 선언한다. (세션에 저장되있는 member의 id를 불러옴)
+        # 로그인된 회원을 선언한다. => member_id (세션에 저장되있는 member의 id를 불러옴)
         member_id = request.session['member']['id']
         # University model에서 member_id 컬럼이 member_id 변수와 일치하는지 확인하고 그 중 첫번째 객체를 가져옴
         university = University.objects.filter(member_id=member_id).first()
@@ -56,20 +56,24 @@ class MyPageMainView(View):
 
         # 공모전 목록 가져오기
 
+        # 대학생인 경우에만 적용 (공모전 참여자는 대학생회원만 가능)
         if university:
+            # 공모전 목록에서 기존 ExhibitionMember의 university_id를 역참조하여, 세션에 저장된 멤버와 일치하는지 확인하고
+            # 공모전 목록을 최신순으로 뽑아옴
             exhibitions = Exhibition.objects.filter(exhibitionmember__university=university).order_by('-id')
 
+        # 학교회원인 경우에만 적용 (공모전 작성자는 학생회원만 가능)
         elif school:
+            # 공모전 목록에서 Exhibition의 school_id와 세션에 저장된 멤버와 일치하는지 확인하고
+            # 공모전 목록을 최신순으로 뽑아옴
             exhibitions = Exhibition.objects.filter(school=school).order_by('-id')
 
+        # 일반회원인 경우 공모전이 없기때문에 None으로 선언 --> 일반회원으로 로그인시 공모전목록이 없는 에러를 해결할 수 있음
         else :
             exhibitions = None
 
-        request.session['member'] = MemberSerializer(Member.objects.get(id=request.session['member']['id'])).data
-        check = request.GET.get('check')
-
-        point = request.GET.get('point')
         # 커뮤니티 목록 가져오기
+        # status = 0 -> 게시 완료 인 커뮤니티 목록을 최신순으로 불러옴
         community = Community.objects.filter(member_id=member_id, status=0).order_by('-id')
 
 
@@ -78,24 +82,30 @@ class MyPageMainView(View):
         check = request.GET.get('check')
 
         # 자료 공유 목록을 가져오는 로직
+        # 자료 공유는 대학생만 가능하기 때문에, 우선 대학생인 회원의 아이디와 일치하는지 검증해서 첫번째 객체를 가져옴
         share_university = University.objects.filter(member_id=member_id).first()
 
         # 작성자가 공유한 목록
+        # Share (자료공유)에 전에 선언한 share_university를 member_id에 검증하고 최신순으로 자료공유 목록을 불러옴
         share_write = Share.objects.filter(university=share_university).order_by('-id')
 
         # 구매자가 구매한 목록
+        # 자료공유 구매자 -> ShareMember 모델에서 university와 share_university를 검증하고 자료공유 구매 목록을 최신순으로 불러옴
         share_pay = ShareMember.objects.filter(university=share_university).order_by('-id')
 
-        # 페이지 번호
+        # 페이지 번호 (화면에서 페이지처리로 불러오기 위해 page를 가져옴)
         page = request.GET.get('page', 1)
 
         # 페이지당 행 수
-        share_row_count = 80
+        # 자료공유 목록을 8개씩 불러옴
+        share_row_count = 8
 
-        # 필터링된 자료 공유 목록을 페이지별로 나눔
+        # 필터링된 자료 공유 목록을 페이지별로 나눔 (Paginator 함수를 사용)
         share_paginator = Paginator(share_write if share_write else share_pay, share_row_count)
 
+        # 예외처리 --> 페이지 처리를 할때 생기는 오류를 예방하기 위해서 사용함
         try:
+            # 
             shares = share_paginator.page(page)
         except PageNotAnInteger:
             # 페이지 번호가 정수가 아닌 경우, 첫 페이지를 반환
