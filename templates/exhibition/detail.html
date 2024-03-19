@@ -18,7 +18,12 @@
                             <div class="community-content-wrapper">
                                 <div class="community-content">
                                     <div class="community-detail-container">
+                                    {% if request.session.member.member_status == False %}
+                                        <a href="{% url 'member:admin_main_exhibition' %}">
+                                    {% elif request.session.member.member_status == True %}
                                         <a href="{% url 'exhibition:list' %}">
+                                    {% endif %}
+                                        
                                             <button type="button" class="go-to-list-btn">
                                                 <span>
                                                     <svg viewBox="0 0 24 24" fill="none" focusable="false" role="presentation" class="go-to-list-svg" aria-hidden="true">
