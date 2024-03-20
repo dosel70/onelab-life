@@ -191,6 +191,20 @@ class MyPageMainView(View):
             # 페이지가 비어 있는 경우, 마지막 페이지를 반환
             communities = community_paginator.page(community_paginator.num_pages)
 
+        # 공모전 페이징 처리
+        exhibitions_row_count = 3
+        exhibitions_paginator = Paginator(exhibitions, exhibitions_row_count)
+
+        if exhibitions:
+            try:
+                    exhibitions = exhibitions_paginator.page(page)
+            except PageNotAnInteger:
+                    exhibitions = exhibitions_paginator.page(1)
+            except EmptyPage:
+                    exhibitions = exhibitions_paginator.page(exhibitions_paginator.num_pages)
+        else:
+                exhibitions = None
+
         # 기본 프로필 이미지 설정
         default_profile_url = 'https://static.wadiz.kr/assets/icon/profile-icon-1.png'
         # 세션의 멤버가 프로필이 없을때,
