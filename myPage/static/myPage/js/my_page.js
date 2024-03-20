@@ -759,5 +759,3 @@ likes.forEach((like) => {
         e.ariaPressed = "true";
     });
 });
-
-

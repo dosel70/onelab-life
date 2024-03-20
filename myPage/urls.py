@@ -1,7 +1,7 @@
 from django.conf.urls.static import static
 from django.urls import path
 
-from myPage.views import MyPageMainView, MyPagePointView, DeleteProfileView, MyPageCommunityView, MemberLogoutView, \
+from myPage.views import MyPageMainView, MyPagePointView, DeleteProfileView, MemberLogoutView, \
     MyPageOnelabAPI, delete_onelab, OneLabMembersAPI, delete_members, delete_all
 from oneLabProject import settings
 
@@ -11,7 +11,6 @@ urlpatterns = [
     # path('main/<int:page>/',MyPagePlaceAPIView.as_view(),name='main'),
     path('main/delete/',DeleteProfileView.as_view(),name='delete'),
     path('my_point/',MyPagePointView.as_view(), name='mypage_point'),
-    path('community/',MyPageCommunityView.as_view(), name='community'),
     path('logout/',MemberLogoutView.as_view(),name='logout'),
     path('onelab/api/', MyPageOnelabAPI.as_view(), name='onelab_api'),
     path('onelab_list/', OneLabMembersAPI.as_view(), name='lab_api'),

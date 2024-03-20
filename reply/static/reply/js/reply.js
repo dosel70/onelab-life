@@ -34,16 +34,26 @@ replyService.getList(community_id, page + 1).then((replies) => {
 const showList = (replies) => {
     let text = ``;
     replies.forEach((reply) => {
+        // 회원의 프로필 이미지 경로 가져오기
+        const profileImageUrl = `/upload/member/${reply.member_name}`;
+
+        // 회원의 프로필 이미지가 존재하는지 확인하고 경로를 가져옵니다.
+        let memberProfileImage = "/default_profile_image.png"; // 기본 이미지 경로
+        if (reply.member_profile_image) {
+            memberProfileImage = reply.member_profile_image.path; // 실제 프로필 이미지 경로로 교체
+        }
+
         text += `
             <li>
                 <div>
                     <div class="comment-user-wrapper-container">
                         <div class="comment-user-wrapper-avatar">
                             <!-- a태그 클릭시 해당 댓글 작성 회원의 마이페이지 이동 -->
-                            <a href="">
+                            <a href="/myPage/main/">
                                 <div class="avatar" style="width: 36px; height: 36px;">
                                     <span class="avatar-has-image">
-                                        <img src="/upload/${reply.member_path}" width="15px">
+                                        <!-- 프로필 이미지를 동적으로 로드 -->
+                                        <img src="${profileImageUrl}" width="15px">
                                     </span>
                                 </div>
                             </a>
@@ -72,7 +82,6 @@ const showList = (replies) => {
     });
     return text;
 }
-
 moreButton.addEventListener("click", (e) => {
     replyService.getList(community_id, ++page, showList).then((text) => {
         ul.innerHTML += text;

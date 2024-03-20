@@ -68,7 +68,7 @@
                                     SNS 로그인 </h3>-->
                                 <div>
                                     <div class="oauth-wrap">
-                                        <form action="{% provider_login_url 'kakao' %}" method="post">
+{#                                        <form action="{% provider_login_url 'kakao' %}" method="post">#}
                                             {% csrf_token %}
                                             <button class="sns-Button-kakao btn-first">
                                                 <span>
@@ -80,8 +80,8 @@
                                                     </span>
                                                 </span>
                                             </button>
-                                        </form>
-                                        <form action="{% provider_login_url 'google' %}" method="post">
+{#                                        </form>#}
+{#                                        <form action="{% provider_login_url 'google' %}" method="post">#}
                                             {% csrf_token %}
                                             <button aria-label="구글로 인증하기" class="login-btn google">
                                                 <span>
@@ -129,8 +129,8 @@
                                                     </span>
                                                 </span>
                                             </button>
-                                        </form>
-                                        <form action="{% provider_login_url 'naver' %}" method="post">
+{#                                        </form>#}
+{#                                        <form action="{% provider_login_url 'naver' %}" method="post">#}
                                             {% csrf_token %}
                                             <button aria-label="네이버로 인증하기" class="sns-Button-naver btn-first">
                                                 <span>
@@ -142,7 +142,7 @@
                                                     </span>
                                                 </span>
                                             </button>
-                                        </form>
+{#                                        </form>#}
                                     </div>
                                 </div>
                             </section>

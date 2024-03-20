@@ -296,22 +296,8 @@
                         </div>
                     </div>
                      <!-----버튼 클릭 시 나오는 모달 창--------------->
-                      <div class="modal" style="    display: none;
-                       position: fixed;
-                       flex-direction: column;
-                       inset: 0px;
-                       z-index: 1000;
-                       align-items: center;
-                       justify-content: center;
-                       text-align: center;
-                       background-color: #8586898a;">
-                        <div class="warn-modal" style="padding: 24px; box-sizing: border-box;
-                        position: unset;
-                        width: 288px;
-                        margin: 20vh 0px;
-                        background: rgb(255, 255, 255);
-                        box-shadow: rgb(33 35 41 / 12%) 0px 2px 12px;
-                        border-radius: 8px">
+                      <div class="modal">
+                        <div class="warn-modal">
                             <div id="content-wrap">
                                 
                             </div>
@@ -338,6 +324,7 @@
     <script src="{% static 'payment/js/payment.js' %}"></script>
     <script src="{% static 'payment/js/payContent.js' %}"></script>
     <script src="{%  static 'payment/js/payAPI.js' %}"></script>
+    <script src="{% static 'payment/js/point_modal.js' %}"></script>
     
     <script>
         purchaseBtn = document.querySelector('#order-button')

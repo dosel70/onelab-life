@@ -5,7 +5,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'myPage/images/favicon-16x16.png' %}">
     <link rel="stylesheet" href="{% static 'myPage/css/school-exhibit-list.css'%}">
     <link rel="stylesheet" href="{% static 'myPage/css/my-page-body.css' %}">
-     <link rel="stylesheet" href="{% static 'css/main/main-page.css' %}" />
+    <link rel="stylesheet" href="{% static 'myPage/css/myPage-footer.css' %}" />
     <style>
         .profile {
             width: 100%;
@@ -2012,36 +2012,7 @@
         window.location.href='{% url 'myPage:main' %}'
     })
     </script>
-{#    <script>#}
-{#document.getElementById('more-view-btn').addEventListener('click', function() {#}
-{#    var currentPage = parseInt(this.getAttribute('data-page'));#}
-{#    var nextPage = currentPage + 1;#}
-{#    var universityId = 2; // 여기에 대학 회원의 ID를 설정하세요#}
-{#    #}
-{#    fetch('?page=' + nextPage + '&university_id=' + universityId)#}
-{#    .then(response => response.text())#}
-{#    .then(data => {#}
-{#        var parser = new DOMParser();#}
-{#        var htmlDoc = parser.parseFromString(data, 'text/html');#}
-{#        var newShares = htmlDoc.querySelectorAll('#share-view');#}
-{#        var shareContainer = document.querySelector('.table-layout-container');#}
-{#        #}
-{#        newShares.forEach(function(share) {#}
-{#            shareContainer.appendChild(share);#}
-{#        });#}
-{#        #}
-{#        // Update data-page attribute#}
-{#        document.getElementById('more-view-btn').setAttribute('data-page', nextPage);#}
-{#        #}
-{#        // Hide more button if no more pages#}
-{#        var hasMorePages = htmlDoc.querySelector('.search-result-inner-inner').getAttribute('data-has-more-pages');#}
-{#        if (hasMorePages === 'false') {#}
-{#            document.getElementById('more-view-btn').style.display = 'none';#}
-{#        }#}
-{#    });#}
-{# });#}
-{#    </script>#}
-
+    
     <script>
     // 더보기 버튼 요소를 선택.
         const moreViewBtn = document.querySelector("#more-view-btn");

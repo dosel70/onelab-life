@@ -42,7 +42,7 @@ class CommunityWriteView(View):
             'community_title': data['community-title'],
             'community_content': data['community-content'],
             'post_status': data['categories'],
-            'member_file': MemberFile.objects.filter(member=member),
+            # 'member_file': MemberFile.objects.filter(member=member),
         }
 
         community = Community.objects.create(**data)
@@ -61,7 +61,7 @@ class CommunityDetailView(View):
         community = Community.objects.get(id=request.GET['id'])
         community.update_date = timezone.now()
         member = Member(**request.session['member'])
-        profile = MemberFile.objects.filter(member=member).first()
+        profile = MemberFile.objects.filter(member=member.id)
 
 
         context = {
