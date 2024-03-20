@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-m&1gjc)a!0m&t4-skkigdplzw%e&f)5j@ksztwce%#bqaksqs)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost','3.38.246.56']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost','3.38.246.56','onelab.life']
 
 
 # Application definition
