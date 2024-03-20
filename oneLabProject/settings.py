@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-m&1gjc)a!0m&t4-skkigdplzw%e&f)5j@ksztwce%#bqaksqs)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost','3.38.246.56']
 
 
 # Application definition
@@ -142,13 +142,13 @@ DATABASES = {
         # DBMS 모듈 경로
         'ENGINE': 'django.db.backends.mysql',
         # DATABASE 이름
-        'NAME': 'onelab',
+        'NAME': 'onelabServer',
         # 계정 이름
-        'USER': 'onelab-sh',
+        'USER': 'onelabServer',
         # 비밀번호
         'PASSWORD': '1234',
         # DBMS가 설치된 서버 PC의 IP
-        'HOST': '3.36.88.17',
+        'HOST': '3.38.246.56',
         # DBMS의 포트번호
         'PORT': '3306'
     }
@@ -191,6 +191,7 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # 파일 접근시
 MEDIA_URL = '/upload/'
 
