@@ -552,7 +552,7 @@ function soft_delete_onelab(onelabname)  {
 
     const data = { selectedName: onelabname };
 
-   fetch('http://127.0.0.1:10000/myPage/deleteonelab/', {
+   fetch('/myPage/deleteonelab/', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
