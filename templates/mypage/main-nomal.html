@@ -5,7 +5,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'myPage/images/favicon-16x16.png' %}">
     <link rel="stylesheet" href="{% static 'myPage/css/school-exhibit-list.css'%}">
     <link rel="stylesheet" href="{% static 'myPage/css/my-page-body.css' %}">
-     <link rel="stylesheet" href="{% static 'css/main/main-page.css' %}" />
+     <link rel="stylesheet" href="{% static 'myPage/css/myPage-footer.css' %}" />
     <style>
         .profile {
             width: 100%;
@@ -3889,7 +3889,7 @@
                     moreViewBtn.dataset.page = page;
         
                     // 만약 더 이상 추가할 공모전이 없다면 더보기 버튼을 숨김.
-                    if (count <= 4) {
+                    if (count === 3) {
                         moreViewBtn.style.display = "none";
                     }
                 })
