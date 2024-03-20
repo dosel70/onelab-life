@@ -224,7 +224,7 @@ class MyPageMainView(View):
             context['place_file'] = PlaceFile.objects.filter(place_id=places.first()).first() # 장소 파일
             context['shares'] = shares # 자료 정보
             context['exhibitions'] = exhibitions # 공모전 정보
-            context['university'] = university # 대학교 회원 정보 
+            context['university'] = university # 대학교 회원 정보
 
         if school: # 학교 회원인 경우
             member = request.session['member']['id'] # 멤버 아이디
