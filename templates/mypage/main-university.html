@@ -2014,14 +2014,14 @@
     </script>
     
    <script>
-        // 더보기 버튼 요소를 선택.
+     // 더보기 버튼 요소를 선택.
         const moreViewBtn = document.querySelector("#more-view-btn");
         
         // 더보기 버튼 클릭 이벤트에 대한 리스너를 추가.
         moreViewBtn.addEventListener("click", () => {
             // 현재 페이지에서 1을 더한 페이지를 계산.
             const page = parseInt(moreViewBtn.dataset.page) + 1; 
-        
+            console.log('제발좀되라 ㅠㅠㅠㅠ!!!')
             // 현재 페이지 URL에서 쿼리스트링을 제거한 URL을 가져옴
             const url = window.location.href.split('?')[0]; 
         

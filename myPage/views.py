@@ -197,13 +197,13 @@ class MyPageMainView(View):
 
         if exhibitions:
             try:
-                    exhibitions = exhibitions_paginator.page(page)
+                exhibitions = exhibitions_paginator.page(page)
             except PageNotAnInteger:
-                    exhibitions = exhibitions_paginator.page(1)
+                exhibitions = exhibitions_paginator.page(1)
             except EmptyPage:
-                    exhibitions = exhibitions_paginator.page(exhibitions_paginator.num_pages)
+                exhibitions = exhibitions_paginator.page(exhibitions_paginator.num_pages)
         else:
-                exhibitions = None
+            exhibitions = None
 
         # 기본 프로필 이미지 설정
         default_profile_url = 'https://static.wadiz.kr/assets/icon/profile-icon-1.png'
