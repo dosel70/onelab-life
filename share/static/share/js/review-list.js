@@ -1,7 +1,7 @@
 let page = 1
 const moreButton = document.getElementById("more");
 const getList = (callback) => {
-    fetch(`http://127.0.0.1:10000/share/review/list/${share_id}/${page}`)
+    fetch(`http://3.38.246.56//share/review/list/${share_id}/${page}`)
     .then((response) => response.json())
     .then((reviews) => {
         if(callback){

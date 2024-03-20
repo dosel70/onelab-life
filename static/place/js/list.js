@@ -21,7 +21,7 @@ async function likePost(placeId) {
 }
 
 const getList = (callback) => {
-    fetch(`http://127.0.0.1:10000/place/list/${page}`)
+    fetch(`/place/list/${page}`)
     .then((response) => response.json())
     .then((places) => {
         if(callback){

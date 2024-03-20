@@ -1,7 +1,7 @@
 let page = 1
 const moreButton = document.getElementById("more");
 const getList = (callback) => {
-    fetch(`http://127.0.0.1:10000/share/review/list/${share_id}/${page}`)
+    fetch(`/share/review/list/${share_id}/${page}`)
     .then((response) => response.json())
     .then((reviews) => {
         if(callback){
@@ -164,7 +164,7 @@ function getNewList() {
 
         page = 1
         // 서버에 정렬 방식을 전달하고 리뷰 다시 로드
-        fetch(`http://127.0.0.1:10000/share/review/list/${share_id}/${page}/?sort=${sortOrder}`)
+        fetch(`/share/review/list/${share_id}/${page}/?sort=${sortOrder}`)
             .then(response => response.json())
             .then(reviews => {
                 // 리뷰를 처리하는 코드
