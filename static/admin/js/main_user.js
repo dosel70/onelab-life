@@ -1,6 +1,6 @@
 let page = 1
 const getList = (callback) => {
-    fetch(`http://127.0.0.1:10000/member/admin_main_user/${page}`)
+    fetch(`http://onelab.life/member/admin_main_user/${page}`)
         .then((response) => response.json())
         .then((notifications) => {
             if(callback){
@@ -68,7 +68,7 @@ function handleSearch() {
 }
 
 function fetchMembers(option, page, searchText= '') {
-    let url = `http://127.0.0.1:10000/member/admin_main_user/${page}?option=${option}`;
+    let url = `http://onelab.life/member/admin_main_user/${page}?option=${option}`;
     if (searchText) {
         url += `&keyword=${searchText}`;
     }
@@ -130,7 +130,7 @@ function changeToSchoolMember() {
     })
 
     const data = {selected_items: selectedItems};
-    fetch(`http://127.0.0.1:10000/member/translate/`, {
+    fetch(`http://onelab.life/member/translate/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

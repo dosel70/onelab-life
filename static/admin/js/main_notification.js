@@ -1,6 +1,6 @@
 let page = 1
 const getList = (callback) => {
-    fetch(`http://127.0.0.1:10000/member/admin_main_notification/${page}`)
+    fetch(`http://onelab.life/member/admin_main_notification/${page}`)
         .then((response) => response.json())
         .then((notifications) => {
             if(callback){
@@ -70,7 +70,7 @@ function handlePageLinkClick(pageNumber) {
 
 
 function fetchNotifications(option, page){
-    let url = `http://127.0.0.1:10000/member/admin_main_notification/${page}?option=${option}`;
+    let url = `http://onelab.life/member/admin_main_notification/${page}?option=${option}`;
 
     fetch(url)
         .then((response) => response.json())
@@ -143,7 +143,7 @@ function deleteSelectedItems() {
         console.log(key[0] + ', ' + key[1])
     }
     const data = {selected_items: selectedItems};
-    fetch('http://127.0.0.1:10000/member/soft_delete/', {
+    fetch('http://onelab.life/member/soft_delete/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
