@@ -1,7 +1,7 @@
 let page = 1
 const moreButton = document.getElementById("more");
 const getList = (callback) => {
-    fetch(`http://127.0.0.1:10000/place/review/list/${place_id}/${page}`)
+    fetch(`http://onelab.life/place/review/list/${place_id}/${page}`)
     .then((response) => response.json())
     .then((reviews) => {
         if(callback){
@@ -164,7 +164,7 @@ document.querySelectorAll('.order-select-desktop-sort-item').forEach(item => {
         }
 
         // 서버에 정렬 방식을 전달하고 리뷰 다시 로드
-        fetch(`http://127.0.0.1:10000/place/review/list/${place_id}/1/?sort=${sortOrder}`)
+        fetch(`http://onelab.life/place/review/list/${place_id}/1/?sort=${sortOrder}`)
             .then(response => response.json())
             .then(reviews => {
                 // 리뷰를 처리하는 코드

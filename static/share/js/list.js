@@ -77,7 +77,7 @@ arrowBtn.addEventListener("click", function(e) {
 let page = 1
 const moreButton = document.getElementById("more");
 const getList = (callback) => {
-    fetch(`http://127.0.0.1:10000/share/list/${page}`)
+    fetch(`http://onelab.life/share/list/${page}`)
     .then((response) => response.json())
     .then((shares) => {
         if(callback){
@@ -285,7 +285,7 @@ function getGrade() {
 
     // 해당 학년과 학과 다시 로드
     page = 1;
-    const url = `http://127.0.0.1:10000/share/list/${page}?gradeSort=${gradeSort}&majorSort=${majorSort}&sortOrder=${sortOrder}`;
+    const url = `http://onelab.life/share/list/${page}?gradeSort=${gradeSort}&majorSort=${majorSort}&sortOrder=${sortOrder}`;
     fetch(url)
         .then(response => response.json())
         .then(shares => {
