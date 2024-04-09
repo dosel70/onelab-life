@@ -1,4 +1,4 @@
-# OneLab |<a href="http://www.jimcarry.site/"> Spring Boot 프로젝트 : 대학 상향 평준화 원랩 서비(http://www.onelab.life/)</a>
+# OneLab |<a href="http://www.onelab.life/"> Spring Boot 프로젝트 : 대학 상향 평준화 원랩 서비(http://www.onelab.life/)</a>
 
 ## 🖥️ 프로젝트 소개
 개개인의 창고에 다른 사람의 짐을 보관할 수 있는 서비스, 창고 제공자는 방치된 빈 방을 경제적이고 활용성 있게 만들 수 있으며, 창고 사용자는 집의 여유공간을 확보할 수 있다.
