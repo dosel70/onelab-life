@@ -89,58 +89,58 @@ class PointListView(View):
         return render(request, 'point/pay-list.html', context)
 
 
-class PointListAPI(APIView):
-    def get(self, request):
-        page = request.GET.get('page', 1)
-        type = request.GET.get('type', '')
-        keyword = request.GET.get('keyword', '')
-        order = request.GET.get('order', 'recent')
-        page = int(request.GET.get('page', 1))
-
-        condition = Q()
-        if type:
-            for t in list(type):
-                if t == 't':
-                    condition |= Q(post_title__contains=keyword)
-
-                elif t == 'c':
-                    condition |= Q(post_content__contains=keyword)
-
-                elif t == 'w':
-                    condition |= Q(member__member_name__contains=keyword)
-
-        row_count = 5
-        offset = (page - 1) * row_count
-        limit = page * row_count
-        total = Point.enabled_objects.filter(condition).count()
-        page_count = 5
-
-        end_page = math.ceil(page / page_count) * page_count
-        start_page = end_page - page_count + 1
-        real_end = math.ceil(total / row_count)
-        end_page = real_end if end_page > real_end else end_page
-
-        if end_page == 0:
-            end_page = 1
-
-        context = {
-            'total': total,
-            'order': order,
-            'start_page': start_page,
-            'end_page': end_page,
-            'page': page,
-            'real_end': real_end,
-            'page_count': page_count,
-            'type': type,
-            'keyword': keyword,
-        }
-        ordering = '-id'
-        if order == 'popular':
-            ordering = '-id'
-
-        context['points'] = list(Point.enabled_objects.filter(condition).order_by(ordering))[offset:limit]
-
-        return render(request, 'point/pay-list.html', context)
+# class PointListAPI(APIView):
+#     def get(self, request):
+#         page = request.GET.get('page', 1)
+#         type = request.GET.get('type', '')
+#         keyword = request.GET.get('keyword', '')
+#         order = request.GET.get('order', 'recent')
+#         page = int(request.GET.get('page', 1))
+#
+#         condition = Q()
+#         if type:
+#             for t in list(type):
+#                 if t == 't':
+#                     condition |= Q(post_title__contains=keyword)
+#
+#                 elif t == 'c':
+#                     condition |= Q(post_content__contains=keyword)
+#
+#                 elif t == 'w':
+#                     condition |= Q(member__member_name__contains=keyword)
+#
+#         row_count = 5
+#         offset = (page - 1) * row_count
+#         limit = page * row_count
+#         total = Point.enabled_objects.filter(condition).count()
+#         page_count = 5
+#
+#         end_page = math.ceil(page / page_count) * page_count
+#         start_page = end_page - page_count + 1
+#         real_end = math.ceil(total / row_count)
+#         end_page = real_end if end_page > real_end else end_page
+#
+#         if end_page == 0:
+#             end_page = 1
+#
+#         context = {
+#             'total': total,
+#             'order': order,
+#             'start_page': start_page,
+#             'end_page': end_page,
+#             'page': page,
+#             'real_end': real_end,
+#             'page_count': page_count,
+#             'type': type,
+#             'keyword': keyword,
+#         }
+#         ordering = '-id'
+#         if order == 'popular':
+#             ordering = '-id'
+#
+#         context['points'] = list(Point.enabled_objects.filter(condition).order_by(ordering))[offset:limit]
+#
+#         return render(request, 'point/pay-list.html', context)
 
 
 class PointListDetailView(View):

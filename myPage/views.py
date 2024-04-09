@@ -256,8 +256,8 @@ class MyPageMainView(View):
                       'mypage/main-high.html' if highschool else 'mypage/main-university.html' if university else 'mypage/main.html'
                       if school else 'mypage/main-nomal.html', context)
 
+# 프로필 기능 관련 View
 
-    # 프로필 기능 관련 View
     def post(self, request):
         data = request.POST
         file = request.FILES.get('profile')  # 'profile'은 input의 name 속성
@@ -474,7 +474,7 @@ class MyPagePointView(View):
         # myPage:my_point 경로로 리다이렉션
         return redirect(request,'mypage:my_point')
 
-# 로그아웃 기능 View -> 로그 아웃 버튼을 눌렀을 때 기능 구현
+# 로그아웃 기능 View -> 로그 아웃 버튼을 눌렀을 때 기능 구현tbl
 class MemberLogoutView(View):
     def get(self, request):
         # 현재 세션 정보 초기화
